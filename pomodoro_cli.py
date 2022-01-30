@@ -31,7 +31,12 @@ def pomodoro(number_work: int, wk_minutes:int, sb_minutes: int, lb_minutes: int)
 
 def main():
     print("Welcome to CL Pomodoro Timer!")
-    number_work = int(input("Number of work sessions before long break: "))
+    try:
+        number_work = int(input("Number of work sessions before long break: "))
+    except ValueError as e:
+        print("Invalid entry. Please use positive non-zero integers.")
+        print(f"Error: {e}")
+        main()
     print("Please enter the number of whole minutes:")
     wk_minutes = int(input("Work Session length: "))
     sb_minutes = int(input("Break length: "))
