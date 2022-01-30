@@ -1,7 +1,6 @@
 import time
 import datetime
 
-# Create class that acts as a countdown
 def work_length(wk_minutes):
     # Calculate the total number of seconds
     return wk_minutes * 60
