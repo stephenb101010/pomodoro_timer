@@ -29,14 +29,36 @@ def pomodoro(number_work: int, wk_minutes:int, sb_minutes: int, lb_minutes: int)
     countdown_timer(work_length(wk_minutes))
     countdown_timer(long_break_length(lb_minutes))
 
+def check_input(input_text):
+    try:
+        number_input = int(input(input_text))
+    except ValueError:
+        print("Invalid entry. Please use positive non-zero integers.")
+        check_input(input_text)
+    except Exception as e:
+        print("Invalid entry.")
+        print(type(e))
+        check_input(input_text)
+    if number_input <= 0:
+        print("Please enter a whole number greater than 0")
+        check_input(input_text)
+    return number_input
+'''
+Getting this error when I run this:
+Traceback (most recent call last):
+  File "/home/jafeito/Pomodoro_Timer/pomodoro_cli.py", line 57, in <module>
+    main()
+  File "/home/jafeito/Pomodoro_Timer/pomodoro_cli.py", line 50, in main
+    number_work = check_input("Number of work sessions before long break: ")
+  File "/home/jafeito/Pomodoro_Timer/pomodoro_cli.py", line 42, in check_input
+    if number_input <= 0:
+UnboundLocalError: local variable 'number_input' referenced before assignment
+'''
+
+
 def main():
     print("Welcome to CL Pomodoro Timer!")
-    try:
-        number_work = int(input("Number of work sessions before long break: "))
-    except ValueError as e:
-        print("Invalid entry. Please use positive non-zero integers.")
-        print(f"Error: {e}")
-        main()
+    number_work = check_input("Number of work sessions before long break: ")
     print("Please enter the number of whole minutes:")
     wk_minutes = int(input("Work Session length: "))
     sb_minutes = int(input("Break length: "))
