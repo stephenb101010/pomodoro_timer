@@ -36,14 +36,14 @@ def check_input(input_text: str, min_number: int):
             return number_input
         else:
             print("Please enter a whole number greater than 0")
-            check_input(input_text)
+            check_input(input_text, min_number)
     except ValueError:
         print("Invalid entry. Please use positive non-zero integers.")
-        check_input(input_text)
+        check_input(input_text, min_number)
     except Exception as e:
         print("Invalid entry.")
         print(type(e))
-        check_input(input_text)
+        check_input(input_text, min_number)
 
 def main():
     print("Welcome to CL Pomodoro Timer!")
