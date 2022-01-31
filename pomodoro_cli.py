@@ -29,10 +29,10 @@ def pomodoro(number_work: int, wk_minutes:int, sb_minutes: int, lb_minutes: int)
     countdown_timer(work_length(wk_minutes))
     countdown_timer(long_break_length(lb_minutes))
 
-def check_input(input_text):
+def check_input(input_text: str, min_number: int):
     try:
         number_input = int(input(input_text))
-        if number_input > 0:
+        if number_input >= min_number:
             return number_input
         else:
             print("Please enter a whole number greater than 0")
@@ -47,11 +47,11 @@ def check_input(input_text):
 
 def main():
     print("Welcome to CL Pomodoro Timer!")
-    number_work = check_input("Number of work sessions before long break: ")
+    number_work = check_input("Number of work sessions before long break (at least 2): ", 2)
     print("Please enter the number of minutes for each timer:")
-    wk_minutes = check_input("Work Session length: ")
-    sb_minutes = check_input("Break length: ")
-    lb_minutes = check_input("Long break length: ")
+    wk_minutes = check_input("Work Session length: ", 1)
+    sb_minutes = check_input("Break length: ", 1)
+    lb_minutes = check_input("Long break length: ", 1)
     pomodoro(number_work, wk_minutes, sb_minutes, lb_minutes)
 
 main()
