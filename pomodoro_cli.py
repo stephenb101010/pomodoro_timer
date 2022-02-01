@@ -29,20 +29,21 @@ def pomodoro(number_work: int, wk_minutes:int, sb_minutes: int, lb_minutes: int)
     countdown_timer(work_length(wk_minutes))
     countdown_timer(long_break_length(lb_minutes))
 
+#If there is an error it will try again but it won't assign the value to number_input.
+#number_input just ends up being "None".
 def check_input(input_text: str, min_number: int):
     try:
         number_input = int(input(input_text))
         if number_input >= min_number:
             return number_input
         else:
-            print("Please enter a whole number greater than 0")
-            check_input(input_text, min_number)
+            print(f"Please enter a whole number greater than or equal to {min_number}")
     except ValueError:
         print("Invalid entry. Please use positive non-zero integers.")
-        check_input(input_text, min_number)
     except Exception as e:
         print("Invalid entry.")
         print(type(e))
+    if type(number_input) != "int":
         check_input(input_text, min_number)
 
 def main():
