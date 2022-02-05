@@ -1,16 +1,6 @@
 import time
 import datetime
 
-def work_length(wk_minutes):
-    # Calculate the total number of seconds
-    return wk_minutes * 60
-
-def short_break_length(sb_minutes):
-    return sb_minutes * 60
-
-def long_break_length(lb_minutes):
-    return lb_minutes * 60
-
 def countdown_timer(seconds):
     # While loop that checks if total_seconds reaches zero
     while seconds > 0:
@@ -22,12 +12,12 @@ def countdown_timer(seconds):
         seconds -= 1
     print("Bzzzt! The countdown is at zero seconds!")
 
-def pomodoro(number_work: int, wk_minutes:int, sb_minutes: int, lb_minutes: int):
+def pomodoro(number_work: int, wk_seconds:int, sb_seconds: int, lb_seconds: int):
     for i in range(1, number_work):
-        countdown_timer(work_length(wk_minutes))
-        countdown_timer(short_break_length(sb_minutes))
-    countdown_timer(work_length(wk_minutes))
-    countdown_timer(long_break_length(lb_minutes))
+        countdown_timer(wk_seconds)
+        countdown_timer(sb_seconds)
+    countdown_timer(wk_seconds)
+    countdown_timer(lb_seconds)
 
 def get_input(inp_txt: str, min_num: int):
     usr_in = input(inp_txt)
@@ -55,9 +45,9 @@ def main():
     print("Welcome to CL Pomodoro Timer!")
     number_work = get_input("Number of work sessions before long break (at least 2): ", 2)
     print("Please enter the number of minutes for each timer:")
-    wk_minutes = get_input("Work Session length: ", 1)
-    sb_minutes = get_input("Break length: ", 1)
-    lb_minutes = get_input("Long break length: ", 1)
-    pomodoro(number_work, wk_minutes, sb_minutes, lb_minutes)
+    wk_seconds = get_input("Work Session length: ", 1) * 60
+    sb_seconds = get_input("Break length: ", 1) * 60
+    lb_seconds = get_input("Long break length: ", 1) * 60
+    pomodoro(number_work, wk_seconds, sb_seconds, lb_seconds)
 
 main()
