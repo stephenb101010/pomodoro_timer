@@ -1,13 +1,6 @@
 import time
 import datetime
-import notify2
-
-notify2.init("Pomodoro Timer")
-
-#Desktop icon attribution: <a href="https://www.flaticon.com/free-icons/notification" title="notification icons">Notification icons created by Freepik - Flaticon</a>
-ICON_PATH = "notifications.png"
-summary = "Pomodoro Timer"
-n = notify2.Notification(summary, message, icon = ICON_PATH)
+#notify2 is now deprecated. learning about desktop-notify.
 
 def countdown_timer(seconds):
     # While loop that checks if total_seconds reaches zero
